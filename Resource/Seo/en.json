@@ -1,0 +1,34 @@
+[
+  {
+    "Path": "",
+    "Title": "Home",
+    "Keywords": "",
+    "Description": "",
+    "CanonicalUrl": "",
+    "CustomEntry": ""
+  },
+  {
+    "Path": "pagenotfound",
+    "Title": "Page not found",
+    "Keywords": "",
+    "Description": "",
+    "CanonicalUrl": "",
+    "CustomEntry": ""
+  },
+  {
+    "Path": "about",
+    "Title": "About",
+    "Keywords": "",
+    "Description": "",
+    "CanonicalUrl": "",
+    "CustomEntry": ""
+  },
+  {
+    "Path": "blog",
+    "Title": "Blog",
+    "Keywords": "",
+    "Description": "",
+    "CanonicalUrl": "",
+    "CustomEntry": ""
+  }
+]

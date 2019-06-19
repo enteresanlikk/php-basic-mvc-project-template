@@ -1,0 +1,34 @@
+[
+  {
+    "Path": "",
+    "Title": "Anasayfa",
+    "Keywords": "",
+    "Description": "",
+    "CanonicalUrl": "",
+    "CustomEntry": ""
+  },
+  {
+    "Path": "sayfa-bulunamadi",
+    "Title": "Sayfa bulunamadı",
+    "Keywords": "",
+    "Description": "",
+    "CanonicalUrl": "",
+    "CustomEntry": ""
+  },
+  {
+    "Path": "hakkimizda",
+    "Title": "Hakkımızda",
+    "Keywords": "",
+    "Description": "",
+    "CanonicalUrl": "",
+    "CustomEntry": ""
+  },
+  {
+    "Path": "blog",
+    "Title": "Blog",
+    "Keywords": "",
+    "Description": "",
+    "CanonicalUrl": "",
+    "CustomEntry": ""
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "Controller": "Home",
+    "Action": "Index",
+    "Url": ""
+  },
+  {
+    "Controller": "About",
+    "Action": "Index",
+    "Url": "about"
+  },
+  {
+    "Controller": "PageNotFound",
+    "Action": "Index",
+    "Url": "pagenotfound"
+  },
+  {
+    "Controller": "Blog",
+    "Action": "Index",
+    "Url": "blog"
+  },
+  {
+    "Controller": "Blog",
+    "Action": "Detail",
+    "Url": "blog/{url}"
+  }
+]

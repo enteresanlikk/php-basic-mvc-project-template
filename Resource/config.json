@@ -1,0 +1,31 @@
+{
+  "SSLRedirection": true,
+  "WWWRedirection": true,
+  "Live": false,
+  "Sites": [
+    {
+      "Prefix": "",
+      "Culture": "tr-TR",
+      "Default": true,
+      "Active": true,
+      "Live": false,
+      "Files": {
+        "Resource": "Locales/tr.json",
+        "Routes": "Routes/tr.json",
+        "Seo": "Seo/tr.json"
+      }
+    },
+    {
+      "Prefix": "en",
+      "Culture": "en-US",
+      "Default": false,
+      "Active": true,
+      "Live": false,
+      "Files": {
+        "Resource": "Locales/en.json",
+        "Routes": "Routes/en.json",
+        "Seo": "Seo/en.json"
+      }
+    }
+  ]
+}

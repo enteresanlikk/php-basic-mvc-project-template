@@ -1,0 +1,32 @@
+[
+  {
+    "Controller": "Home",
+    "Action": "Index",
+    "Url": ""
+  },
+  {
+    "Controller": "About",
+    "Action": "Index",
+    "Url": "hakkimizda"
+  },
+  {
+    "Controller": "PageNotFound",
+    "Action": "Index",
+    "Url": "sayfa-bulunamadi"
+  },
+  {
+    "Controller": "Home",
+    "Action": "Closed",
+    "Url": "yonlendir"
+  },
+  {
+    "Controller": "Blog",
+    "Action": "Index",
+    "Url": "blog"
+  },
+  {
+    "Controller": "Blog",
+    "Action": "Detail",
+    "Url": "blog/{url}"
+  }
+]
