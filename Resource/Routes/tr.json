@@ -25,6 +25,11 @@
     "Url": "blog"
   },
   {
+    "Controller": "XML",
+    "Action": "Sitemap",
+    "Url": "sitemap.xml"
+  },
+  {
     "Controller": "Blog",
     "Action": "Detail",
     "Url": "blog/{url}"

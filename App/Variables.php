@@ -21,6 +21,8 @@ define("CONTROLLER", ROOT."Controllers".DIRECTORY_SEPARATOR);
 
 define("RESOURCE", ROOT."Resource".DIRECTORY_SEPARATOR);
 
+define("MODELS", APP."Models".DIRECTORY_SEPARATOR);
+
 define("DOMAIN", getDomain());
 
 $paths = array(
@@ -29,7 +31,8 @@ $paths = array(
     CORE,
     HELPERS,
     SERVICES,
-    APP_CONTROLLERS
+    APP_CONTROLLERS,
+    MODELS
 );
 
 set_include_path(implode(PATH_SEPARATOR, $paths));
