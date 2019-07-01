@@ -7,6 +7,7 @@ class Url {
     public static function Action($action, $controller, $params = array()) {
         $retVal = "";
         $domain = DOMAIN.(!empty($prefix) ? "/".$prefix."/" : "/");
+        $isPath = false;
 
         $configService = new Config();
         $currentSite = $configService->getCurrentSite();
@@ -18,15 +19,16 @@ class Url {
                 $url = $route->Url;
 
                 $retVal .= self::convertUrlWithUrl($configService->getRouteUrl($url), $params);
+                $isPath = true;
             }
         }
 
         $retVal = rtrim($retVal, "/");
-        if(empty($retVal)) {
+        if(empty($retVal) && !$isPath) {
             $retVal = mb_strtolower($controller)."/".mb_strtolower($action);
         }
 
-        return $domain.$retVal;
+        return rtrim($domain.$retVal, "/");
     }
 
     public static function convertUrlWithUrl($url, $pars) {
