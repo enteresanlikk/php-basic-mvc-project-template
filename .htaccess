@@ -21,7 +21,7 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-fl
 
-RewriteRule ^([0-9a-zA-Z-_]+)/sitemap.xml(/?)$ index.php?par=$1 [L,QSA]
+RewriteRule ^([0-9a-zA-Z-_/]+)/sitemap.xml(/?)$ index.php?par=$1 [L,QSA]
 RewriteRule ^sitemap.xml(/?)$ index.php?par=$1 [L,QSA]
 
 RewriteRule ^([0-9a-zA-Z-_/]+)$ index.php?par=$1 [L,QSA]

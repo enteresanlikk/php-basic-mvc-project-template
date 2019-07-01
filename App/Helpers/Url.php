@@ -6,6 +6,7 @@ use App\Services\Config;
 class Url {
     public static function Action($action, $controller, $params = array()) {
         $retVal = "";
+        $domain = DOMAIN.(!empty($prefix) ? "/".$prefix."/" : "/");
 
         $configService = new Config();
         $currentSite = $configService->getCurrentSite();
@@ -16,12 +17,16 @@ class Url {
             if($action == $route->Action && $controller == $route->Controller) {
                 $url = $route->Url;
 
-                $retVal = DOMAIN.(!empty($prefix) ? "/".$prefix."/" : "/");
                 $retVal .= self::convertUrlWithUrl($configService->getRouteUrl($url), $params);
             }
         }
 
-        return rtrim($retVal, "/");
+        $retVal = rtrim($retVal, "/");
+        if(empty($retVal)) {
+            $retVal = mb_strtolower($controller)."/".mb_strtolower($action);
+        }
+
+        return $domain.$retVal;
     }
 
     public static function convertUrlWithUrl($url, $pars) {

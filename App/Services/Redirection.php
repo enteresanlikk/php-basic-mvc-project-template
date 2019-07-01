@@ -17,7 +17,7 @@ class Redirection {
 
     public function start() {
         $reqUrl = $this->configService->getRequestUrl();
-        if(Tools::isLocalhost() && $this->config->Live) {
+        if(!Tools::isLocalhost() && $this->config->Live) {
             $currentUrl = DOMAIN.$reqUrl;
             $redirectUrl = $this->GetSslAndWwwRedirection();
 

@@ -8,6 +8,10 @@ class HomeController extends BaseController {
         $this->View($data);
     }
 
+    public function Test() {
+        $this->Content(json_encode(array("message"=>"no route url")), "application/json");
+    }
+
     public function Closed() {
         $this->RedirectToAction("Index", "Home");
     }
