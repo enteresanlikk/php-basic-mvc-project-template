@@ -6,8 +6,8 @@
 
     $configService = new Config();
     $routeService = new Route();
-    $sites = $configService->getSites();
-    $currentSite = $configService->getCurrentSite();
+    $sites = Config::getSites();
+    $currentSite = Config::getCurrentSite();
 ?>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">

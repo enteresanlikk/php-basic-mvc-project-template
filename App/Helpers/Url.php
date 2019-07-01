@@ -6,12 +6,14 @@ use App\Services\Config;
 class Url {
     public static function Action($action, $controller, $params = array()) {
         $retVal = "";
-        $domain = DOMAIN.(!empty($prefix) ? "/".$prefix."/" : "/");
-        $isPath = false;
 
         $configService = new Config();
         $currentSite = $configService->getCurrentSite();
         $prefix = $currentSite->Prefix;
+
+        $domain = DOMAIN.(!empty($prefix) ? "/".$prefix."/" : "/");
+        $isPath = false;
+
         $routes = $configService->getRoutes();
         foreach((array)$routes as $route) {
             $route = (object)$route;

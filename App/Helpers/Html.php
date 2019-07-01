@@ -28,9 +28,13 @@ class Html {
                     $includePath = VIEWS."Shared".DIRECTORY_SEPARATOR.$path.".php";
                     if(!file_exists($includePath)) {
 
-                        $includePath = VIEWS.$path;
+                        $includePath = VIEWS.$path.$prefix.".php";
                         if(!file_exists($includePath)) {
-                            return false;
+                            
+                            $includePath = VIEWS.$path.".php";
+                            if(!file_exists($includePath)) {
+                                return false;
+                            }
                         }
                     }
                 }

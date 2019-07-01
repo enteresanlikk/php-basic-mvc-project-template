@@ -27,7 +27,7 @@ class Config {
         return Tools::arrayToObject(json_decode($json, true));
     }
 
-    public function getConfig() {
+    public static function getConfig() {
         return self::$config;
     }
 
@@ -39,7 +39,7 @@ class Config {
         return Tools::arrayToObject(json_decode($json, true));
     }
 
-    public function getResource() {
+    public static function getResource() {
         return self::$resource;
     }
 
@@ -51,7 +51,7 @@ class Config {
         return Tools::arrayToObject(json_decode($json, true));
     }
 
-    public function getRoutes() {
+    public static function getRoutes() {
         return self::$routes;
     }
 
@@ -71,7 +71,7 @@ class Config {
         return Tools::arrayToObject(json_decode($json, true));
     }
 
-    public function getSeo() {
+    public static function getSeo() {
         return self::$seo;
     }
 
@@ -100,7 +100,7 @@ class Config {
         return $sites;
     }
 
-    public function getSites() {
+    public static function getSites() {
         return self::$sites;
     }
 
@@ -148,7 +148,7 @@ class Config {
         return $retVal;
     }
 
-    public function getRequestUrl() {
+    public static function getRequestUrl() {
         $url = $_SERVER['REQUEST_URI'];
         $domainPath = parse_url(DOMAIN);
         $requestUrl = rtrim($url, "/");
@@ -167,7 +167,7 @@ class Config {
         return "/".implode("/", self::splittedUrl()->params);
     }
 
-    public function splittedUrl() {
+    public static function splittedUrl() {
         $url = self::getRequestUrl();
         $explodedPars = array_values(array_filter(explode("/", $url)));
         $par = array(
@@ -188,7 +188,7 @@ class Config {
         return (object)$par;
     }
 
-    private function getLanguageIndex($lang = "") {
+    private static function getLanguageIndex($lang = "") {
         $hasLang = -1;
         foreach((array)self::getSites() as $key => $site) {
             $site = (object)$site;

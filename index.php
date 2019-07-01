@@ -1,6 +1,9 @@
 <?php
     require "App/Variables.php";
 
+    error_reporting(E_ALL);
+    ini_set("display_errors", 1);
+
     use App\Core\Application;
     use App\Services\Config;
     use App\Services\Redirection;

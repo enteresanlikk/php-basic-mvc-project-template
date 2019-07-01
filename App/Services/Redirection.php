@@ -11,8 +11,8 @@ class Redirection {
 
     public function __construct() {
         $this->configService = new Config();
-        $this->redirections = $this->configService->getRedirections();
-        $this->config = $this->configService->getConfig();
+        $this->redirections = Config::getRedirections();
+        $this->config = Config::getConfig();
     }
 
     public function start() {
