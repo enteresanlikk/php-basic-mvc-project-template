@@ -9,7 +9,7 @@ class Url {
 
         $configService = new Config();
         $currentSite = $configService->getCurrentSite();
-        $prefix = $currentSite->Prefix;
+        $prefix = isset($params["lang"]) ? $params["lang"] : $currentSite->Prefix;
 
         $domain = DOMAIN.(!empty($prefix) ? "/".$prefix."/" : "/");
         $isPath = false;
@@ -30,7 +30,7 @@ class Url {
             $retVal = mb_strtolower($controller)."/".mb_strtolower($action);
         }
 
-        return rtrim($domain.$retVal, "/");
+        return mb_strtolower(rtrim($domain.$retVal, "/"));
     }
 
     public static function convertUrlWithUrl($url, $pars) {
@@ -42,6 +42,6 @@ class Url {
     }
 
     public static function Content($path) {
-        return DOMAIN."/".$path;
+        return mb_strtolower(rtrim(DOMAIN."/".$path, "/"));
     }
 }

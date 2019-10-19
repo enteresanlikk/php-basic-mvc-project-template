@@ -7,9 +7,9 @@ use PDOException;
 class DB {
 
     private $host = "localhost";
-    private $username = "";
+    private $username = "root";
     private $password = "";
-    private $database = "";
+    private $database = "basic-project-template";
     private $charset = "utf8";
     public $db;
 

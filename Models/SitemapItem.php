@@ -1,5 +1,5 @@
 <?php
-namespace App\Models;
+namespace Models;
 use App\Services\Tools;
 
 class SitemapItem {

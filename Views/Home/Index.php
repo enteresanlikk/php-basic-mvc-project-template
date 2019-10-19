@@ -1,6 +1,8 @@
 <?php
     use App\Helpers\R;
     use App\Helpers\Url;
+use App\Services\Tools;
+
 ?>
 
 <div class="container">
@@ -8,6 +10,6 @@
     <small><?= $this->Model->aa ?></small>
 </div>
 
-<?php function scripts() { ?>
-    <script src="<?= Url::Content("Content/js/pages/home.js") ?>"></script>
-<?php } ?>
+<?php function scripts() {
+    Tools::getJavascript(Url::Content("Content/js/pages/home.js"));
+ } ?>

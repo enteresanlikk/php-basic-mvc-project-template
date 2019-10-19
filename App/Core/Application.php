@@ -54,11 +54,11 @@ class Application {
                 call_user_func_array([$this->controller, $this->action], $this->parameters);
             } else {
                 BaseController::ErrorPage();
-                echo $this->action." action not found!";
+                //echo $this->action." action not found!";
             }
         } else {
             BaseController::ErrorPage();
-            echo $this->controller." controller not found!";
+            //echo $this->controller." controller not found!";
         }
     }
 }

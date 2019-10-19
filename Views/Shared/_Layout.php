@@ -17,7 +17,9 @@
         Html::partial("_Seo");
 
         Tools::getCss(Url::Content("Content/css/plugins/bootstrap/bootstrap-reboot.min.css"));
+
         Tools::getCss(Url::Content("Content/css/plugins/bootstrap/bootstrap-grid.min.css"));
+
         Tools::getCss(Url::Content("Content/css/plugins/bootstrap/bootstrap.min.css"));
 
         Tools::getCss(Url::Content("Content/css/style.css"));

@@ -2,28 +2,36 @@
 namespace App\Services;
 
 class Tools {
-    public static function getCss($path, $id = "") {
-        try {
-            $id=!empty($id) ? "id=\"$id\"" : "";
-            $css=file_get_contents($path);
-            echo '<style'.(!empty($id) ? ' '.$id : '').'>';
-            echo $css;
-            echo '</style>';
-        } catch (\Exception $e) {
+    public static function getCss($path, $id = "", $inlineFile = false) {
+        $id=!empty($id) ? "id=\"$id\"" : "";
+        if($inlineFile) {
+            try {
+                $css=file_get_contents($path);
+                echo '<style'.(!empty($id) ? ' '.$id : '').'>';
+                echo $css;
+                echo '</style>';
+            } catch (\Exception $e) {
 
+            }
+        } else {
+            echo '<link rel="stylesheet" href="'.$path.'" '.(!empty($id) ? ' '.$id : '').'></style>';
         }
     }
 
-    public static function getJavascript($path, $id="", $isAsync=false) {
-        try {
-            $id=!empty($id) ? "id=\"$id\"" : "";
-            $js=file_get_contents($path);
-            $isAsync=$isAsync?"async":"";
-            echo '<script'.(!empty($id) && $isAsync ? ' '.$id.' '.$isAsync : (!empty($id) ? ' '.$id : ($isAsync ? ' '.$isAsync : ''))).'>';
-            echo $js;
-            echo '</script>';
-        } catch (\Exception $e) {
+    public static function getJavascript($path, $id="", $isAsync=false, $inlineFile = false) {
+        $id=!empty($id) ? "id=\"$id\"" : "";
+        $isAsync=$isAsync?"async":"";
+        if($inlineFile) {
+            try {
+                $js=file_get_contents($path);
+                echo '<script'.(!empty($id) && $isAsync ? ' '.$id.' '.$isAsync : (!empty($id) ? ' '.$id : ($isAsync ? ' '.$isAsync : ''))).'>';
+                echo $js;
+                echo '</script>';
+            } catch (\Exception $e) {
 
+            }
+        } else {
+            echo '<script src="'.$path.'"'.(!empty($id) && $isAsync ? ' '.$id.' '.$isAsync : (!empty($id) ? ' '.$id : ($isAsync ? ' '.$isAsync : ''))).'></script>';
         }
     }
 

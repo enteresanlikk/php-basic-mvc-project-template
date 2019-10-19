@@ -1,6 +1,6 @@
 <?php
 use App\Controllers\BaseController;
-use App\Models\SitemapItem;
+use Models\SitemapItem;
 use App\Helpers\Url;
 
 class XMLController extends BaseController {

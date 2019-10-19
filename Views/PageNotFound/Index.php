@@ -2,7 +2,7 @@
     use App\Helpers\R;
     use App\Helpers\Url;
 
-    $Layout = "";
+    //$Layout = "";
 ?>
 
 <div class="container">

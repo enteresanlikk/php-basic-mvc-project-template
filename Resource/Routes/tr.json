@@ -25,13 +25,18 @@
     "Url": "blog"
   },
   {
+    "Controller": "Blog",
+    "Action": "Detail",
+    "Url": "blog/{url}"
+  },
+  {
     "Controller": "XML",
     "Action": "Sitemap",
     "Url": "sitemap.xml"
   },
   {
-    "Controller": "Blog",
-    "Action": "Detail",
-    "Url": "blog/{url}"
+    "Controller": "Robots",
+    "Action": "Index",
+    "Url": "robots.txt"
   }
 ]
