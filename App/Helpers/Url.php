@@ -11,7 +11,6 @@ class Url {
         $currentSite = $configService->getCurrentSite();
         $prefix = isset($params["lang"]) ? $params["lang"] : $currentSite->Prefix;
 
-        $domain = DOMAIN.(!empty($prefix) ? "/".$prefix."/" : "/");
         $isPath = false;
 
         $routes = $configService->getRoutes();
@@ -29,8 +28,9 @@ class Url {
         if(empty($retVal) && !$isPath) {
             $retVal = mb_strtolower($controller)."/".mb_strtolower($action);
         }
+        $retVal = mb_strtolower(rtrim((!empty($prefix) ? "/".$prefix."/" : "/").$retVal, "/"));
 
-        return mb_strtolower(rtrim($domain.$retVal, "/"));
+        return !empty($retVal) ? $retVal : "/";
     }
 
     public static function convertUrlWithUrl($url, $pars) {

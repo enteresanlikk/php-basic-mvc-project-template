@@ -1,7 +1,8 @@
 <?php
 use App\Controllers\BaseController;
-use Models\SitemapItem;
+use App\Models\SitemapItem;
 use App\Helpers\Url;
+use \App\Models\BlogRepository;
 
 class XMLController extends BaseController {
     public $sitemapItem;
@@ -11,6 +12,11 @@ class XMLController extends BaseController {
         $this->sitemapItem->add(Url::Action("Index", "Home"), 1, "Daily");
         $this->sitemapItem->add(Url::Action("Index", "About"), 0.95, "Daily");
         $this->sitemapItem->add(Url::Action("Index", "Blog"), 0.95, "Daily");
+
+        $entries = BlogRepository::GetAll();
+        foreach ($entries as $entry) {
+            $this->sitemapItem->add(Url::Action("Detail", "Blog", ["url" => $entry["url"]]), 0.95, "Daily");
+        }
 
         $this->RenderSitemap($this->sitemapItem->getSitemaps());
     }
@@ -22,7 +28,7 @@ class XMLController extends BaseController {
             
         foreach($list as $val) {
             $sitemap .= "<url>
-                            <loc>".$val->url."</loc>
+                            <loc>".DOMAIN.$val->url."</loc>
                             <lastmod>".$val->lastmod."</lastmod>
                             <changefreq>".$val->changefreq."</changefreq>
                             <priority>".$val->priority."</priority>

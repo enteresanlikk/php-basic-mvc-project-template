@@ -14,33 +14,55 @@ class Route {
     public function getActiveRoute($returnPars = false) {
         $retVal = new \stdClass();
         $url = trim($this->configService->getUrl(), "/");
+
+        $queryStr = explode("?", $url);
+
+        if(!empty($queryStr[0])) {
+            $url = $queryStr[0];
+        }
+
         $requestUrls = explode("/", $url);
 
         $routes = $this->configService->getRoutes();
+        $arrayRoutes = (array)$routes;
 
-        foreach((array)$routes as $route) {
-            $route = (object)$route;
+        //#region static route
+        foreach ($arrayRoutes as $route) {
             if($route->Url == $url) {
                 $retVal = $route;
                 break;
             }
+        }
+        //#endregion
 
-            $routeUrls = explode("/", $route->Url);
+        //#region dynamic route
+        if(!isset($retVal->Url)) {
+            foreach($arrayRoutes as $route) {
+                $route = (object)$route;
 
-            if(count($requestUrls) == count($routeUrls)) {
-                foreach ($routeUrls as $i => $routeUrl) {
-                    if($routeUrl == $requestUrls[$i] || preg_match($this->parPattern, $routeUrl)) {
-                        $retVal = $route;
-                    } else if($routeUrl != $requestUrls[$i] && !preg_match($this->parPattern, $routeUrl)) {
-                        $retVal = new \stdClass();
-                        break;
+                $routeUrls = explode("/", $route->Url);
+
+                if(count($requestUrls) == count($routeUrls)) {
+                    foreach ($routeUrls as $i => $routeUrl) {
+                        if($routeUrl == $requestUrls[$i] || preg_match($this->parPattern, $routeUrl)) {
+                            $retVal = $route;
+                            break;
+                        } else if($routeUrl != $requestUrls[$i] && !preg_match($this->parPattern, $routeUrl)) {
+                            $retVal = new \stdClass();
+                            break;
+                        }
                     }
+                }
+
+                if(isset($retVal->Url)) {
+                    break;
                 }
             }
         }
+        //#endregion
 
         $pars = array();
-        if(count((array)$retVal) > 0) {
+        if(isset($retVal->Url)) {
             $splittedPars = explode("/", $retVal->Url);
             foreach ($splittedPars as $i => $par) {
                 if(preg_match($this->parPattern, $par)) {
@@ -79,6 +101,6 @@ class Route {
                 }
             }
         }
-        return ($domain ? DOMAIN : "").rtrim((!empty($prefix) ? "/".$prefix."/" : "/").$retVal, "/");
+        return rtrim(($domain ? DOMAIN : "").((!empty($prefix) ? "/".$prefix."/" : "/").$retVal), "/");
     }
 }

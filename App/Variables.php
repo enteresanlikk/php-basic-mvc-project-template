@@ -3,7 +3,7 @@
 function getDomain() {
     $domain = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
     $domain .= dirname($_SERVER['PHP_SELF']);
-    $domain = rtrim($domain, "/");
+    $domain = trim($domain, "/");
 
     return $domain;
 }

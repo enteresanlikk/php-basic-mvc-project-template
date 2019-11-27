@@ -14,7 +14,7 @@ class Tools {
 
             }
         } else {
-            echo '<link rel="stylesheet" href="'.$path.'" '.(!empty($id) ? ' '.$id : '').'></style>';
+            echo '<link rel="stylesheet" href="'.$path.'" '.(!empty($id) ? ' '.$id : '').' preload></style>';
         }
     }
 
@@ -92,5 +92,21 @@ class Tools {
             return true;
         }
         return false;
+    }
+
+    public static function FilterPost() {
+        $_POST = array_map(function($post){
+            return htmlspecialchars(strip_tags(addslashes(trim($post))));
+        },$_POST);
+    }
+
+    public static function FilterGet() {
+        $_GET = array_map(function($get){
+            return htmlspecialchars(strip_tags(addslashes(trim($get))));
+        },$_GET);
+    }
+
+    public static function RemoveHtmlTags($text) {
+        return strip_tags($text);
     }
 }

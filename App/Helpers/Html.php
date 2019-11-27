@@ -58,7 +58,7 @@ class Html {
         $requestUrl = trim($configService->getUrl(), "/");
 
         $url = Url::Action($action, $controller, $params);
-        $tempUrl = trim(str_replace(DOMAIN.(!empty($currentSite->Prefix) ? "/".$currentSite->Prefix : ""), "", $url), "/");
+        $tempUrl = trim(str_replace((!empty($currentSite->Prefix) ? "/".$currentSite->Prefix : ""), "", $url), "/");
 
         if($active && Tools::startsWith($requestUrl, $tempUrl)) {
             $class .= " active";

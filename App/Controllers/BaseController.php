@@ -60,8 +60,18 @@ class BaseController extends DB {
         }
     }
 
-    protected function RenderView($action, $controller) {
-        self::View([], $action, $controller);
+    protected function RenderView($action, $controller, $model = []) {
+        self::View($model, $action, $controller);
+    }
+
+    protected function RenderViewToHtml($action, $controller, $model = []) {
+        $name = str_replace("Controller", "", $controller)."/".$action;
+        $this->view = new View($name, $model);
+        $content = $this->view->render();
+
+        $body = $content->Content;
+
+        return $body;
     }
 
     protected function Content($par, $type="text/html") {
@@ -74,18 +84,19 @@ class BaseController extends DB {
             $f = debug_backtrace()[1];
             $controller = str_replace("Controller", "", $f["class"]);
         }
-        $url = Url::Action($action, $controller, $params);
+        $url = trim(Url::Action($action, $controller, $params));
+        $url = !empty($url) ? $url : "/";
         Tools::redirect($url, $status);
     }
 
     public static function ErrorPage($redirect = false) {
-        //if(!Tools::isLocalhost()) {
+        if(!Tools::isLocalhost()) {
             if($redirect) {
                 $url = Url::Action("Index", "PageNotFound");
                 Tools::redirect($url);
             } else {
                 (new BaseController)->RenderView("Index", "PageNotFound");
             }
-        //}
+        }
     }
 }

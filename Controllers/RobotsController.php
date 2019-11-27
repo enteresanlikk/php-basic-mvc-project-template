@@ -11,9 +11,9 @@ class RobotsController extends BaseController {
 
         array_push($this->robotsTxt, "User-agent: *");
         array_push($this->robotsTxt, "");
-        if(count((array)$sites) > 1) {
+        if(count((array)$sites) > 0) {
             foreach($sites as $site) {
-                array_push($this->robotsTxt, "Sitemap: ".Url::Action("Sitemap", "XML", ["lang" => $site->Prefix]));
+                array_push($this->robotsTxt, "Sitemap: ".DOMAIN.Url::Action("Sitemap", "XML", ["lang" => $site->Prefix]));
             }
         }
 
