@@ -164,7 +164,13 @@ class Config {
     }
 
     public function getUrl() {
-        return "/".implode("/", self::splittedUrl()->params);
+        $url = "/".implode("/", self::splittedUrl()->params);
+        $queryStr = explode("?", $url);
+
+        if(!empty($queryStr[0])) {
+            $url = $queryStr[0];
+        }
+        return $url;
     }
 
     public static function splittedUrl() {

@@ -26,11 +26,11 @@ class Url {
 
         $retVal = rtrim($retVal, "/");
         if(empty($retVal) && !$isPath) {
-            $retVal = mb_strtolower($controller)."/".mb_strtolower($action);
+            $retVal = $controller."/".$action;
         }
-        $retVal = mb_strtolower(rtrim((!empty($prefix) ? "/".$prefix."/" : "/").$retVal, "/"));
+        $retVal = rtrim((!empty($prefix) ? "/".$prefix."/" : "/").$retVal, "/");
 
-        return !empty($retVal) ? $retVal : "/";
+        return !empty($retVal) ? DOMAIN . $retVal : DOMAIN;
     }
 
     public static function convertUrlWithUrl($url, $pars) {
@@ -42,6 +42,6 @@ class Url {
     }
 
     public static function Content($path) {
-        return mb_strtolower(rtrim(DOMAIN."/".$path, "/"));
+        return rtrim(DOMAIN."/".$path, "/");
     }
 }
