@@ -45,6 +45,7 @@ class BaseController extends DB {
         $this->view = new View($name, $model);
         $content = $this->view->render();
 
+        $title = $content->Title;
         $body = $content->Content;
 
         $viewLayout = $content->Layout;

@@ -4,6 +4,8 @@
     use App\Services\Route;
     use App\Helpers\Html;
 
+    $model = self::$Model;
+
     $seoService = new Seo();
     $configService = new Config();
     $routeService = new Route();
@@ -15,6 +17,9 @@
 
     $defaultTitle = "Test Project";
     $title = isset($seo->Title) ? $seo->Title : $defaultTitle;
+    if(isset($model->title) && !empty($model->title)) {
+        $title = $model->title;
+    }
 
     $keywords = isset($seo->Keywords) ? $seo->Keywords : "";
     $description = isset($seo->Description) ? $seo->Description : "";

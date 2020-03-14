@@ -27,6 +27,7 @@ class View {
 
         $retVal = array(
             "Layout" => isset($Layout) ? (empty($Layout) ? "" : $Layout) : VIEWS."_ViewStart.php",
+            "Title" => isset($title) && !empty($title) ? $title : "",
             "Content" => $content
         );
         return (object)$retVal;
