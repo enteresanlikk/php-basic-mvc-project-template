@@ -8,12 +8,15 @@ class R {
         $resources = (new Config())->getResource();
 
         $newKey = explode('.', $key);
-        $text = $resources->{$newKey[0]};
-        for ($i=1; $i<count($newKey); $i++) {
-            $val = $newKey[$i];
-            $text = $text->{$val};
+        $text = $key;
+        if (isset($resources->{$newKey[0]})) {
+            $text = $resources->{$newKey[0]};
+            for ($i=1; $i<count($newKey); $i++) {
+                $val = $newKey[$i];
+                $text = $text->{$val};
+            }
         }
 
-        return $key;
+        return $text;
     }
 }
