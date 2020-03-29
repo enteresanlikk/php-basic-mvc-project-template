@@ -13,6 +13,10 @@ class R {
             $text = $resources->{$newKey[0]};
             for ($i=1; $i<count($newKey); $i++) {
                 $val = $newKey[$i];
+                if(!isset($text->{$val})) {
+                    $text = $key;
+                    break;
+                }
                 $text = $text->{$val};
             }
         }
